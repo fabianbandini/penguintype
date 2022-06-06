@@ -1,0 +1,6 @@
+{
+  "apiRoutes": {
+    "german": "https://monkeytype.com/languages/german.json",
+    "english": "https://monkeytype.com/languages/english.json"
+  }
+}
