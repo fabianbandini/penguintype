@@ -1,11 +1,13 @@
-import json
+from util import loadSettings, loadApiRoute, loadFromApi
 
 text = ""
+currentLang = loadSettings()["user"]["lang"]
 
 
 def fetchData():
-    # todo fetch-data from api
-    return "Hello World"
+    data = loadFromApi(loadApiRoute(currentLang))
+
+    return data
 
 
 def generateText():
@@ -16,3 +18,6 @@ def getText():
     if text == "":
         return
     return text
+
+
+print(fetchData())
