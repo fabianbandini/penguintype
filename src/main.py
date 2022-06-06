@@ -1,6 +1,3 @@
-import json
+from api import getText
 
-with open('./strings.json') as file:
-    data = json.load(file)
-
-print(data["languages"])
+print(getText())

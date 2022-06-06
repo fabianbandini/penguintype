@@ -1,23 +1,27 @@
 from util import loadSettings, loadApiRoute, loadFromApi
 
-text = ""
 currentLang = loadSettings()["user"]["lang"]
 
 
 def fetchData():
     data = loadFromApi(loadApiRoute(currentLang))
-
     return data
 
 
 def generateText():
-    return "Hello World"
+    data = fetchData()
+    text = ""
+    for word in data["words"]:
+        if word == data["words"][len(data["words"])-1]:
+            text += word + "."
+        else:
+            text += (word + " ")
 
-
-def getText():
-    if text == "":
-        return
     return text
 
 
-print(fetchData())
+def getText():
+    text = generateText()
+    if text == "":
+        return "Error occurred api.py line:23"
+    return text
