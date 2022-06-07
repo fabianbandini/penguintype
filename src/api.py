@@ -1,6 +1,8 @@
 from util import loadSettings, loadApiRoute, loadFromApi
+from random import randrange
 
 currentLang = loadSettings()["user"]["lang"]
+textLength = loadSettings()["user"]["length"]
 
 
 def fetchData():
@@ -11,11 +13,16 @@ def fetchData():
 def generateText():
     data = fetchData()
     text = ""
-    for word in data["words"]:
-        if word == data["words"][len(data["words"])-1]:
-            text += word + "."
-        else:
-            text += (word + " ")
+    counter = 0
+
+    while counter < textLength:
+        word = data["words"][randrange(len(data["words"])-1)]
+        text += (word + " ")
+        counter += 1
+
+    if counter == textLength:
+        word = data["words"][randrange(len(data["words"]) - 1)]
+        text += (word + ".")
 
     return text
 
