@@ -15,3 +15,8 @@ def loadApiRoute(lang):
 
 def loadFromApi(url):
     return requests.get(url).json()
+
+
+def loadText(text):
+    with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:
+        return json.load(settingsFile)["text"][text]

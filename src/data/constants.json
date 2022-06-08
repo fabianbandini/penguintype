@@ -2,5 +2,11 @@
   "apiRoutes": {
     "ger": "https://monkeytype.com/languages/german.json",
     "eng": "https://monkeytype.com/languages/english.json"
+  },
+  "text": {
+    "welcome": "Welcome to Penguin Type!",
+    "login": "Enter your username: ",
+    "highscore": "your current highscore is: ",
+    "lang": "your selected language is: "
   }
 }
