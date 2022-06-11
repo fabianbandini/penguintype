@@ -1,6 +1,7 @@
 import json
 import requests
 import os
+from database import fetchScoreboard
 
 
 def loadSettings():
@@ -20,3 +21,7 @@ def loadFromApi(url):
 def loadText(text):
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:
         return json.load(settingsFile)["text"][text]
+
+
+def getHighscore(username):
+    return fetchScoreboard(username)
