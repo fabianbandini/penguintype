@@ -7,6 +7,9 @@
     "welcome": "Welcome to Penguin Type!",
     "login": "Enter your username: ",
     "highscore": "your current highscore is: ",
-    "lang": "your selected language is: "
+    "lang": "your selected language is: ",
+    "help": "if you need help type -help",
+    "helpcmd": "-lang - to cahnge language \n -start to start \n",
+    "error": "Please enter a valid input. for help type -help"
   }
 }
