@@ -42,4 +42,6 @@ def loadApp():
             print(loadText("error") + "\n")
 
 
-main()
+            
+if __name__ == "__main__":
+    main()
