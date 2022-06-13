@@ -3,10 +3,20 @@ import requests
 import os
 from database import fetchScoreboard
 
-
 def loadSettings():
-    with open(os.path.join(os.path.dirname(__file__), '..', 'userdata', 'settings.json')) as settingsFile:
+    with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'strings.json')) as settingsFile:
         return json.load(settingsFile)
+
+
+def checkIfLangExists(lang):
+    langs = []
+    for _lang in loadSettings()["languages"]:
+        langs.append(_lang)
+
+    if langs.__contains__(lang):
+        return True
+    else:
+        return False
 
 
 def loadApiRoute(lang):

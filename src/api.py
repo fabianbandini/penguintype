@@ -1,14 +1,14 @@
 import os
-from util import loadSettings, loadApiRoute, loadFromApi
+from util import loadApiRoute, loadFromApi
+from database import loadLang
 from random import randrange
 
-currentLang = loadSettings()["user"]["lang"]
-textLength = loadSettings()["user"]["length"]
+textLength = 12
 
 
-def fetchData():
+def fetchData(username):
     open(os.path.join(os.path.dirname(__file__), 'data', 'texts.txt'), 'w').close()
-    data = loadFromApi(loadApiRoute(currentLang))
+    data = loadFromApi(loadApiRoute(loadLang(username)))
     return data
 
 

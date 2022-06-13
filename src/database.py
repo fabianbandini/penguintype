@@ -26,3 +26,19 @@ def fetchScoreboard(username):
 
 def pushScore(username, score):
     scoreBoard.child("scoreboard").child(username).child("score").set(score)
+
+
+def checkUsername(username):
+    x = scoreBoard.child("scoreboard").child(username).child("score").get()
+    if x is not None:
+        return True
+    else:
+        return False
+
+
+def saveLang(username, lang):
+    scoreBoard.child("scoreboard").child(username).child("lang").set(lang)
+
+
+def loadLang(username):
+    return scoreBoard.child("scoreboard").child(username).child("lang").get()
