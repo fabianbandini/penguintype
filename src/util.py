@@ -22,7 +22,6 @@ def checkIfLangExists(lang):
         return False
 
 
-<<<<<<< HEAD
 def startTyping(username):
     counter = 0
     all = getText(username)
@@ -38,13 +37,15 @@ def startTyping(username):
                 counter += 1
 
     counter += len(allWords) - counter
-
     finalTime = afterTyping - beforeTyping
+    ratio = counter / len(allWords)
+    wordsPerMinute = counter / finalTime
 
     print("You completed the text in: " + finalTime.__str__())
+    print("Your writing accuracy: " + ratio)
+    print("Words per minute: " + wordsPerMinute)
     pushScore(username, finalTime.__str__())
 
-=======
 def loadLanguages():
     languages = []
 
@@ -52,7 +53,6 @@ def loadLanguages():
         languages.append(_language)
 
     return languages
->>>>>>> ccbdebce206949c10b058613375307f85c004590
 
 def loadApiRoute(lang):
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:
