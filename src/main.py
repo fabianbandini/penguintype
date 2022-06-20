@@ -19,8 +19,7 @@ def loadApp():
             print(loadText("highscore") + getHighscore(currentUser).__str__())
             print(loadText("lang") + loadLang(currentUser).__str__())
         else:
-            for _language in loadLanguages():
-                print("-" + _language)
+            printLangs()
 
             print("\nPlease enter your desired language to type in.\n")
 
@@ -43,9 +42,22 @@ def loadApp():
 
         if usercmd == "-help":
             print(loadText("helpcmd"))
+        elif usercmd == "-lang":
+            print("Choose your language:")
+            printLangs()
+
+            langInput = input("Choose:")
+
+            if checkIfLangExists(langInput):
+                saveLang(langInput)
+            
         else:
             print(loadText("error") + "\n")
 
 
 if __name__ == "__main__":
     main()
+
+def printLangs():
+    for _language in loadLanguages():
+        print("-" + _language)
