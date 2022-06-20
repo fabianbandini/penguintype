@@ -1,5 +1,6 @@
+from plistlib import load
 from api import getText
-from util import loadText, getHighscore, checkIfLangExists
+from util import loadText, getHighscore, checkIfLangExists, loadLanguages
 from database import checkUsername, saveLang, loadLang, pushScore
 
 currentUser = ""
@@ -18,7 +19,11 @@ def loadApp():
             print(loadText("highscore") + getHighscore(currentUser).__str__())
             print(loadText("lang") + loadLang(currentUser).__str__())
         else:
-            print("Please enter your desired language to type in.\n")
+            for _language in loadLanguages():
+                print("-" + _language)
+
+            print("\nPlease enter your desired language to type in.\n")
+
             langExists = False
             while not langExists:
                 selectedLang = input("Language: ")

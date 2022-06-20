@@ -19,6 +19,14 @@ def checkIfLangExists(lang):
         return False
 
 
+def loadLanguages():
+    languages = []
+
+    for _language in loadSettings()["languages"]:
+        languages.append(_language)
+
+    return languages
+
 def loadApiRoute(lang):
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:
         return json.load(settingsFile)["apiRoutes"][lang]
