@@ -1,5 +1,10 @@
+from plistlib import load
 from api import getText
+<<<<<<< HEAD
 from util import loadText, getHighscore, checkIfLangExists, startTyping
+=======
+from util import loadText, getHighscore, checkIfLangExists, loadLanguages
+>>>>>>> ccbdebce206949c10b058613375307f85c004590
 from database import checkUsername, saveLang, loadLang, pushScore
 
 currentUser = ""
@@ -18,7 +23,10 @@ def loadApp():
             print(loadText("highscore") + getHighscore(currentUser).__str__())
             print(loadText("lang") + loadLang(currentUser).__str__())
         else:
-            print("Please enter your desired language to type in.\n")
+            printLangs()
+
+            print("\nPlease enter your desired language to type in.\n")
+
             langExists = False
             while not langExists:
                 selectedLang = input("Language: ")
@@ -38,11 +46,27 @@ def loadApp():
 
         if usercmd == "-help":
             print(loadText("helpcmd"))
+<<<<<<< HEAD
         elif usercmd == "-start":
             startTyping(currentUser)
+=======
+        elif usercmd == "-lang":
+            print("Choose your language:")
+            printLangs()
+
+            langInput = input("Choose:")
+
+            if checkIfLangExists(langInput):
+                saveLang(langInput)
+            
+>>>>>>> ccbdebce206949c10b058613375307f85c004590
         else:
             print(loadText("error") + "\n")
 
 
 if __name__ == "__main__":
     main()
+
+def printLangs():
+    for _language in loadLanguages():
+        print("-" + _language)

@@ -22,6 +22,7 @@ def checkIfLangExists(lang):
         return False
 
 
+<<<<<<< HEAD
 def startTyping(username):
     counter = 0
     all = getText(username)
@@ -43,6 +44,15 @@ def startTyping(username):
     print("You completed the text in: " + finalTime.__str__())
     pushScore(username, finalTime.__str__())
 
+=======
+def loadLanguages():
+    languages = []
+
+    for _language in loadSettings()["languages"]:
+        languages.append(_language)
+
+    return languages
+>>>>>>> ccbdebce206949c10b058613375307f85c004590
 
 def loadApiRoute(lang):
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:
