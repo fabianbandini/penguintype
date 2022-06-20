@@ -1,9 +1,19 @@
+import json
+import requests
 import os
-from util import loadApiRoute, loadFromApi
 from database import loadLang
 from random import randrange
 
-textLength = 12
+textLength = 10
+
+
+def loadApiRoute(lang):
+    with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:
+        return json.load(settingsFile)["apiRoutes"][lang]
+
+
+def loadFromApi(url):
+    return requests.get(url).json()
 
 
 def fetchData(username):
@@ -12,8 +22,8 @@ def fetchData(username):
     return data
 
 
-def generateText():
-    data = fetchData()
+def generateText(username):
+    data = fetchData(username)
     text = ""
     counter = 0
 
@@ -22,22 +32,18 @@ def generateText():
         text += (word + " ")
         counter += 1
 
-    if counter == textLength:
-        word = data["words"][randrange(len(data["words"]) - 1)]
-        text += (word + ".")
-
     saveText(text)
     return text
 
 
 def saveText(text):
     file = open(os.path.join(os.path.dirname(__file__), 'data', 'texts.txt'), "a")
-    file.write(text+"\n")
+    file.write(text + "\n")
     file.close()
 
 
-def getText():
-    text = generateText()
+def getText(username):
+    text = generateText(username)
     if text == "":
-        return "Error occurred api.py line:23"
+        return "Error occurred api.py line:42"
     return text

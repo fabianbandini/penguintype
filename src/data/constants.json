@@ -9,7 +9,8 @@
     "highscore": "your current highscore is: ",
     "lang": "your selected language is: ",
     "help": "if you need help type -help",
-    "helpcmd": "-lang - to cahnge language \n -start to start \n",
-    "error": "Please enter a valid input. for help type -help"
+    "helpcmd": "-lang - to cahnge language\n -start to start \n",
+    "error": "Please enter a valid input. for help type -help",
+    "timeExpired":"The time has expired. You typed:   "
   }
 }

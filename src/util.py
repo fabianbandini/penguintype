@@ -1,7 +1,10 @@
 import json
 import requests
 import os
-from database import fetchScoreboard
+from database import fetchScoreboard, pushScore
+from api import getText
+from datetime import datetime
+
 
 def loadSettings():
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'strings.json')) as settingsFile:
@@ -17,6 +20,28 @@ def checkIfLangExists(lang):
         return True
     else:
         return False
+
+
+def startTyping(username):
+    counter = 0
+    all = getText(username)
+    allWords = all.split(" ")
+    print(all + "\n")
+    beforeTyping = datetime.now()
+    typeInput = input("type: ")
+    afterTyping = datetime.now()
+
+    for wordWritten in typeInput.split(" "):
+        for wordGiven in allWords:
+            if wordWritten != wordGiven:
+                counter += 1
+
+    counter += len(allWords) - counter
+
+    finalTime = afterTyping - beforeTyping
+
+    print("You completed the text in: " + finalTime.__str__())
+    pushScore(username, finalTime.__str__())
 
 
 def loadApiRoute(lang):

@@ -1,5 +1,5 @@
 from api import getText
-from util import loadText, getHighscore, checkIfLangExists
+from util import loadText, getHighscore, checkIfLangExists, startTyping
 from database import checkUsername, saveLang, loadLang, pushScore
 
 currentUser = ""
@@ -38,6 +38,8 @@ def loadApp():
 
         if usercmd == "-help":
             print(loadText("helpcmd"))
+        elif usercmd == "-start":
+            startTyping(currentUser)
         else:
             print(loadText("error") + "\n")
 
