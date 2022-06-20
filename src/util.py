@@ -26,6 +26,7 @@ def startTyping(username):
     counter = 0
     all = getText(username)
     allWords = all.split(" ")
+    del allWords[-1]
     print(all + "\n")
     beforeTyping = datetime.now()
     typeInput = input("type: ")
@@ -36,14 +37,15 @@ def startTyping(username):
             if wordWritten == wordGiven:
                 counter += 1
 
+    print(typeInput.split(" "))
     finalTime = afterTyping - beforeTyping
     ratio = round(counter / len(typeInput.split(" ")), 2)
-    wordsPerMinute = round(counter / finalTime.seconds * 60, 2)
+    correctWordsPerMinute = round(counter / finalTime.seconds * 60, 2)
 
     print("You completed the text in: " + finalTime.__str__())
     print("Your writing accuracy: " + (ratio * 100).__str__() + "%")
-    print("Words per minute: " + wordsPerMinute.__str__())
-    pushScore(username, finalTime.__str__())
+    print("Correct words per minute: " + correctWordsPerMinute.__str__())
+    pushScore(username, correctWordsPerMinute)
 
 def loadLanguages():
     languages = []
