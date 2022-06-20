@@ -31,16 +31,14 @@ def startTyping(username):
     typeInput = input("type: ")
     afterTyping = datetime.now()
 
-#this logic is not correct
     for wordWritten in typeInput.split(" "):
         for wordGiven in allWords:
-            if wordWritten != wordGiven:
+            if wordWritten == wordGiven:
                 counter += 1
 
-    counter += len(allWords) - counter
     finalTime = afterTyping - beforeTyping
-    ratio = counter / len(allWords)
-    wordsPerMinute = counter / finalTime.seconds * 60
+    ratio = round(counter / len(typeInput.split(" ")), 2)
+    wordsPerMinute = round(counter / finalTime.seconds * 60, 2)
 
     print("You completed the text in: " + finalTime.__str__())
     print("Your writing accuracy: " + (ratio * 100).__str__() + "%")
