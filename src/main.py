@@ -10,6 +10,11 @@ def main():
     loadApp()
 
 
+def printLangs():
+    for _language in loadLanguages():
+        print("-" + _language)
+
+
 def loadApp():
     while True:
         print(loadText("welcome") + "\n\n")
@@ -51,7 +56,7 @@ def loadApp():
             langInput = input("Choose:")
 
             if checkIfLangExists(langInput):
-                saveLang(langInput)
+                saveLang(currentUser, langInput)
             
         else:
             print(loadText("error") + "\n")
@@ -59,7 +64,3 @@ def loadApp():
 
 if __name__ == "__main__":
     main()
-
-def printLangs():
-    for _language in loadLanguages():
-        print("-" + _language)

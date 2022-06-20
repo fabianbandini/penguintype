@@ -31,6 +31,7 @@ def startTyping(username):
     typeInput = input("type: ")
     afterTyping = datetime.now()
 
+#this logic is not correct
     for wordWritten in typeInput.split(" "):
         for wordGiven in allWords:
             if wordWritten != wordGiven:
@@ -39,11 +40,11 @@ def startTyping(username):
     counter += len(allWords) - counter
     finalTime = afterTyping - beforeTyping
     ratio = counter / len(allWords)
-    wordsPerMinute = counter / finalTime
+    wordsPerMinute = counter / finalTime.seconds * 60
 
     print("You completed the text in: " + finalTime.__str__())
-    print("Your writing accuracy: " + ratio)
-    print("Words per minute: " + wordsPerMinute)
+    print("Your writing accuracy: " + (ratio * 100).__str__() + "%")
+    print("Words per minute: " + wordsPerMinute.__str__())
     pushScore(username, finalTime.__str__())
 
 def loadLanguages():
