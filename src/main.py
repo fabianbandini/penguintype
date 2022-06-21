@@ -4,6 +4,7 @@ from util import loadText, getHighscore, checkIfLangExists, loadLanguages, start
 from database import checkUsername, saveLang, loadLang, pushScore
 
 currentUser = ""
+running = True
 
 
 def main():
@@ -16,7 +17,7 @@ def printLangs():
 
 
 def loadApp():
-    while True:
+    while running:
         print(loadText("welcome") + "\n\n")
         currentUser = input(loadText("login"))  # to chönne mer en reggex dri tue
         exists = checkUsername(currentUser)
@@ -57,7 +58,9 @@ def loadApp():
 
             if checkIfLangExists(langInput):
                 saveLang(currentUser, langInput)
-            
+        elif usercmd == "-exit":
+            running = False
+
         else:
             print(loadText("error") + "\n")
 
