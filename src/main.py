@@ -19,7 +19,7 @@ def printLangs():
 def loadApp():
     while running:
         print(loadText("welcome") + "\n\n")
-        currentUser = input(loadText("login"))  # to chönne mer en reggex dri tue
+        currentUser = input(loadText("login"))  #TODO: Implement REXEG
         exists = checkUsername(currentUser)
         if exists:
             print(loadText("highscore") + getHighscore(currentUser).__str__())
@@ -41,7 +41,8 @@ def loadApp():
                 if not langExists:
                     print("Please enter a valid language \n")
 
-        # show a list of commands = -help, -lang (to change languga), -start
+  
+        #TODO: Implement commands -stats, -global
         print(loadText("help") + "\n")
 
         usercmd = input("Enter cmd: \n")
