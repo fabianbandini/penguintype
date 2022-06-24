@@ -1,10 +1,12 @@
 from plistlib import load
 from api import getText
+import re
 from util import loadText, getHighscore, checkIfLangExists, loadLanguages, startTyping
-from database import checkUsername, saveLang, loadLang, pushScore
+from database import checkUsername, saveLang, loadLang, pushScore, fetchFullScoreboard
 
 currentUser = ""
 running = True
+pattern = "^[a-zA-Z]{3,8}$"
 
 
 def main():
@@ -17,9 +19,23 @@ def printLangs():
 
 
 def loadApp():
+    running = True
     while running:
         print(loadText("welcome") + "\n\n")
-        currentUser = input(loadText("login"))  #TODO: Implement REXEG
+
+        valid = False
+        first = True
+
+        while not valid:
+            if not first:
+                print("Invalid username.")
+                first = False
+
+            currentUser = input(loadText("login"))  # TODO: Implement REGEX
+
+            if re.search(pattern, currentUser):
+                valid = True
+
         exists = checkUsername(currentUser)
         if exists:
             print(loadText("highscore") + getHighscore(currentUser).__str__())
@@ -41,8 +57,7 @@ def loadApp():
                 if not langExists:
                     print("Please enter a valid language \n")
 
-  
-        #TODO: Implement commands -stats, -global
+        # TODO: Implement commands -global
         print(loadText("help") + "\n")
 
         usercmd = input("Enter cmd: \n")
@@ -61,7 +76,8 @@ def loadApp():
                 saveLang(currentUser, langInput)
         elif usercmd == "-exit":
             running = False
-
+        # elif usercmd == "-global":
+        #  print(fetchFullScoreboard())
         else:
             print(loadText("error") + "\n")
 

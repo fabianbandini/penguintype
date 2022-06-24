@@ -1,4 +1,5 @@
 import os
+import re
 
 import firebase_admin
 from firebase_admin import credentials
@@ -16,8 +17,8 @@ firebase_admin.initialize_app(cred, {
 scoreBoard = db.reference('/')
 
 
-def fetchScoreboard():
-    return scoreBoard.get()
+def fetchFullScoreboard():
+    _scoreboard = scoreBoard.get()
 
 
 def fetchScoreboard(username):
