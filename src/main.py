@@ -78,7 +78,7 @@ def loadApp():
             elif usercmd == "-exit":
                 running = False
             elif usercmd == "-global":
-                print("Your score is " + getHighscore(currentUser) + "\n")
+                print("Your score is " + getHighscore(currentUser).__str__() + "\n")
                 print(fetchFullScoreboard())
             else:
                 print(loadText("error") + "\n")
