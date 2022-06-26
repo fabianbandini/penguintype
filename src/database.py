@@ -19,6 +19,35 @@ scoreBoard = db.reference('/')
 
 def fetchFullScoreboard():
     _scoreboard = scoreBoard.get()
+    usernames = []
+    users = {}
+
+    for user in _scoreboard["scoreboard"]:
+        usernames.append(user)
+
+    for user in usernames:
+        score = scoreBoard.child("scoreboard").child(user).child("score").get()
+        users[user] = score
+
+    sortedScores = sorted(users.values(), reverse=True)
+    sortedUsers = {}
+
+    for i in sortedScores:
+
+        for y in users.keys():
+            if users[y] == i:
+                sortedUsers[y] = users[y]
+                break
+
+    finalUsers = {}
+    index = 0
+
+    for user in sortedUsers:
+        if index < 10:
+            print((index+1).__str__() + ". " + user + " : " + sortedUsers[user].__str__())
+            index += 1
+
+    print("\n")
 
 
 def fetchScoreboard(username):

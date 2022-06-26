@@ -19,6 +19,7 @@ def printLangs():
 
 
 def loadApp():
+    fetchFullScoreboard()
     running = True
     while running:
         print(loadText("welcome") + "\n\n")
@@ -57,7 +58,7 @@ def loadApp():
                 if not langExists:
                     print("Please enter a valid language \n")
 
-        # TODO: Implement commands -global
+        # todo implement -help
         print(loadText("help") + "\n")
 
         usercmd = input("Enter cmd: \n")
@@ -76,8 +77,9 @@ def loadApp():
                 saveLang(currentUser, langInput)
         elif usercmd == "-exit":
             running = False
-        # elif usercmd == "-global":
-        #  print(fetchFullScoreboard())
+        elif usercmd == "-global":
+            print("Your score is " + getHighscore(currentUser) + "\n")
+            print(fetchFullScoreboard())
         else:
             print(loadText("error") + "\n")
 
