@@ -37,7 +37,6 @@ def startTyping(username):
             if wordWritten == wordGiven:
                 counter += 1
 
-    print(typeInput.split(" "))
     finalTime = afterTyping - beforeTyping
     ratio = round(counter / len(typeInput.split(" ")), 2)
     correctWordsPerMinute = round(counter / finalTime.seconds * 60, 2)
@@ -47,6 +46,7 @@ def startTyping(username):
     print("Correct words per minute: " + correctWordsPerMinute.__str__())
     pushScore(username, correctWordsPerMinute)
 
+
 def loadLanguages():
     languages = []
 
@@ -54,6 +54,7 @@ def loadLanguages():
         languages.append(_language)
 
     return languages
+
 
 def loadApiRoute(lang):
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:

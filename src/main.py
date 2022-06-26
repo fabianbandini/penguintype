@@ -19,7 +19,6 @@ def printLangs():
 
 
 def loadApp():
-    fetchFullScoreboard()
     running = True
     while running:
         print(loadText("welcome") + "\n\n")
@@ -61,27 +60,28 @@ def loadApp():
         # todo implement -help
         print(loadText("help") + "\n")
 
-        usercmd = input("Enter cmd: \n")
+        while running:
+            usercmd = input("Enter cmd: \n")
 
-        if usercmd == "-help":
-            print(loadText("helpcmd"))
-        elif usercmd == "-start":
-            startTyping(currentUser)
-        elif usercmd == "-lang":
-            print("Choose your language:")
-            printLangs()
+            if usercmd == "-help":
+                print(loadText("helpcmd"))
+            elif usercmd == "-start":
+                startTyping(currentUser)
+            elif usercmd == "-lang":
+                print("Choose your language:")
+                printLangs()
 
-            langInput = input("Choose:")
+                langInput = input("Choose:")
 
-            if checkIfLangExists(langInput):
-                saveLang(currentUser, langInput)
-        elif usercmd == "-exit":
-            running = False
-        elif usercmd == "-global":
-            print("Your score is " + getHighscore(currentUser) + "\n")
-            print(fetchFullScoreboard())
-        else:
-            print(loadText("error") + "\n")
+                if checkIfLangExists(langInput):
+                    saveLang(currentUser, langInput)
+            elif usercmd == "-exit":
+                running = False
+            elif usercmd == "-global":
+                print("Your score is " + getHighscore(currentUser) + "\n")
+                print(fetchFullScoreboard())
+            else:
+                print(loadText("error") + "\n")
 
 
 if __name__ == "__main__":
