@@ -6,14 +6,16 @@ from api import getText
 from datetime import datetime
 
 
-def loadSettings():
+# loads constants from constants.json
+def loadConstants():
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'strings.json')) as settingsFile:
         return json.load(settingsFile)
 
 
+# checks if a language exists (hardcoded on client)
 def checkIfLangExists(lang):
     langs = []
-    for _lang in loadSettings()["languages"]:
+    for _lang in loadConstants()["languages"]:
         langs.append(_lang)
 
     if langs.__contains__(lang):
@@ -24,6 +26,7 @@ def checkIfLangExists(lang):
         return False
 
 
+# logic for handling the type test
 def startTyping(username):
     counter = 0
     all = getText(username)
@@ -49,28 +52,33 @@ def startTyping(username):
     pushScore(username, correctWordsPerMinute)
 
 
+# loads languages from constants.json
 def loadLanguages():
     languages = []
 
-    for _language in loadSettings()["languages"]:
+    for _language in loadConstants()["languages"]:
         languages.append(_language)
 
     return languages
 
 
+# loads api constants from constants.json
 def loadApiRoute(lang):
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:
         return json.load(settingsFile)["apiRoutes"][lang]
 
 
+# calls functions from api.py
 def loadFromApi(url):
     return requests.get(url).json()
 
 
+# loads texts from strings.json
 def loadText(text):
     with open(os.path.join(os.path.dirname(__file__), '.', 'data', 'constants.json')) as settingsFile:
         return json.load(settingsFile)["text"][text]
 
 
+# calls function from database.py
 def getHighscore(username):
     return fetchScoreboard(username)

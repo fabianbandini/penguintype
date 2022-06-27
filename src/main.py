@@ -4,8 +4,11 @@ import re
 from util import loadText, getHighscore, checkIfLangExists, loadLanguages, startTyping
 from database import checkUsername, saveLang, loadLang, pushScore, fetchFullScoreboard
 
+# current username who is logged in
 currentUser = ""
+# boolean who
 running = True
+# regex
 pattern = "^[a-zA-Z]{3,8}$"
 
 
@@ -18,6 +21,7 @@ def printLangs():
         print("-" + _language)
 
 
+# main method
 def loadApp():
     running = True
     while running:
@@ -58,6 +62,8 @@ def loadApp():
                     print("Please enter a valid language \n")
         print(loadText("help") + "\n")
 
+
+        # gets userinput
         while running:
             usercmd = input("Enter cmd: \n")
 

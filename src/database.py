@@ -17,6 +17,7 @@ firebase_admin.initialize_app(cred, {
 scoreBoard = db.reference('/')
 
 
+# fetches full scoreboard from firebase and prints the 5 best users
 def fetchFullScoreboard():
     _scoreboard = scoreBoard.get()
     usernames = []
@@ -38,26 +39,27 @@ def fetchFullScoreboard():
             if users[y] == i:
                 sortedUsers[y] = users[y]
                 break
-
-    finalUsers = {}
     index = 0
 
     for user in sortedUsers:
         if index < 10:
-            print((index+1).__str__() + ". " + user + " : " + sortedUsers[user].__str__())
+            print((index + 1).__str__() + ". " + user + " : " + sortedUsers[user].__str__())
             index += 1
 
     print("\n")
 
 
+# fetches score from a defined user from firebase
 def fetchScoreboard(username):
     return scoreBoard.child("scoreboard").child(username).child("score").get()
 
 
+# pushes score from a user to firebase
 def pushScore(username, score):
     scoreBoard.child("scoreboard").child(username).child("score").set(score)
 
 
+# checks if a user already exists
 def checkUsername(username):
     x = scoreBoard.child("scoreboard").child(username).child("score").get()
     if x is not None:
@@ -66,9 +68,11 @@ def checkUsername(username):
         return False
 
 
+# saves a chosen language from a user to firebase
 def saveLang(username, lang):
     scoreBoard.child("scoreboard").child(username).child("lang").set(lang)
 
 
+# loads the saved language from firebase
 def loadLang(username):
     return scoreBoard.child("scoreboard").child(username).child("lang").get()
