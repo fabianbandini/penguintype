@@ -1,0 +1,16 @@
+{
+  "apiRoutes": {
+    "ger": "https://monkeytype.com/languages/german.json",
+    "eng": "https://monkeytype.com/languages/english.json"
+  },
+  "text": {
+    "welcome": "Welcome to Penguin Type!",
+    "login": "Enter your username: ",
+    "highscore": "your current highscore is: ",
+    "lang": "your selected language is: ",
+    "help": "if you need help type -help",
+    "helpcmd": "-lang to change language\n-start to start\n-global to view the global stats\n-exit to leave the application",
+    "error": "Please enter a valid input. for help type -help",
+    "timeExpired":"The time has expired. You typed:   "
+  }
+}

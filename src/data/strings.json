@@ -1,0 +1,20 @@
+{
+    "languages": {
+        "ger": {
+        },
+        "eng": {
+        }
+    },
+
+    "commands": {
+        "-lang": {
+
+        },
+        "-help": {
+
+        },
+        "-start": {
+
+        }
+    }
+}
