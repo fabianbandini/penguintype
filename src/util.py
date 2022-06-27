@@ -17,8 +17,10 @@ def checkIfLangExists(lang):
         langs.append(_lang)
 
     if langs.__contains__(lang):
+        print("Your language was changed.")
         return True
     else:
+        print("Your language was not changed please try again.")
         return False
 
 

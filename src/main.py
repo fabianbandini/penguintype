@@ -56,8 +56,6 @@ def loadApp():
 
                 if not langExists:
                     print("Please enter a valid language \n")
-
-        # todo implement -help
         print(loadText("help") + "\n")
 
         while running:
